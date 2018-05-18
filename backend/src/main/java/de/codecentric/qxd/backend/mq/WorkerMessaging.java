@@ -8,8 +8,9 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.SubscribableChannel;
 import org.springframework.stereotype.Component;
+
+import de.codecentric.qxd.Message;
 
 @Component
 @EnableBinding(Processor.class)
@@ -20,13 +21,13 @@ public class WorkerMessaging {
   @Autowired
   private MessageChannel output;
 
-  public void ping(String message) {
+  public void ping(Message message) {
     LOGGER.info("Sending message: {}", message);
     output.send(MessageBuilder.withPayload(message).build());
   }
 
   @StreamListener(Processor.INPUT)
-  public void onPong(String message) {
+  public void onPong(Message message) {
     LOGGER.info("Received pong");
   }
 

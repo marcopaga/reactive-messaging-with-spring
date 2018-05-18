@@ -8,6 +8,8 @@ import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 
+import de.codecentric.qxd.Message;
+
 @Component
 @EnableBinding(Processor.class)
 public class WorkerMessaging {
@@ -16,9 +18,9 @@ public class WorkerMessaging {
 
   @StreamListener(Processor.INPUT)
   @SendTo(Processor.OUTPUT)
-  public String onPing(String message) {
+  public Message onPing(Message message) {
     LOGGER.info("{} received. Sending pong", message);
-    return "pong";
+    return new Message("pong");
   }
 
 }

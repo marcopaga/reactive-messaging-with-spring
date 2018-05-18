@@ -1,8 +1,11 @@
-package de.codecentric.qxd.backend.controllers;
+package de.codecentric.qxd;
 
 public class Message {
 
   String message;
+
+  public Message() {
+  }
 
   public Message(final String message) {
     this.message = message;
@@ -14,5 +17,12 @@ public class Message {
 
   public void setMessage(final String message) {
     this.message = message;
+  }
+
+  @Override
+  public String toString() {
+    return "Message{" +
+      "message='" + message + '\'' +
+      '}';
   }
 }
