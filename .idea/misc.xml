@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="9" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/classes" />
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../codecentric/life.bootstrap" value="1477138750000" />
+        <entry key="$PROJECT_DIR$/../codecentric/reactive-scopemine" value="1453280202000" />
+        <entry key="$PROJECT_DIR$/../coursera/functional_programming_principles_in_scala/example" value="1459512774000" />
+        <entry key="$PROJECT_DIR$/../scala/fast-track-akka-scala" value="1448274638000" />
+        <entry key="$PROJECT_DIR$/../scala/fpinscala" value="1485524851000" />
+        <entry key="$PROJECT_DIR$/../scala/playground" value="1485523342000" />
+        <entry key="$PROJECT_DIR$/../scala/reactive-flows" value="1452760597000" />
+        <entry key="$PROJECT_DIR$/../scala/reactive-flows-3" value="1452854342000" />
+        <entry key="$PROJECT_DIR$/../scala/reactive-flows-4" value="1452863917000" />
+        <entry key="$PROJECT_DIR$/../scala/reactive-flows-loesung" value="1452689720000" />
+        <entry key="$PROJECT_DIR$/../scala/scalatrain" value="1447845755000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+</project>
