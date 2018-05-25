@@ -11,6 +11,8 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.stereotype.Component;
 
 import de.codecentric.qxd.Message;
+import reactor.core.publisher.FluxSink;
+import reactor.core.publisher.WorkQueueProcessor;
 
 @Component
 @EnableBinding(Processor.class)
@@ -21,6 +23,9 @@ public class WorkerMessaging {
   @Autowired
   private MessageChannel output;
 
+  public final WorkQueueProcessor<Message> queueProcessor = WorkQueueProcessor.create();
+  public final FluxSink<Message> sink = queueProcessor.sink();
+
   public void ping(Message message) {
     LOGGER.info("Sending message: {}", message);
     output.send(MessageBuilder.withPayload(message).build());
@@ -28,7 +33,7 @@ public class WorkerMessaging {
 
   @StreamListener(Processor.INPUT)
   public void onPong(Message message) {
-    LOGGER.info("Received pong");
+    sink.next(message);
   }
 
 }

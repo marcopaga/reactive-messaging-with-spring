@@ -1,5 +1,7 @@
 package de.codecentric.qxd.backend.controllers;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,18 +17,18 @@ public class WorkerController {
   @Autowired
   private WorkerMessaging workerMessaging;
 
-  private Flux<Message> flux = Flux.just(new Message("hallo"));
-
   @GetMapping("/")
   public String workers() {
-    workerMessaging.ping(new Message("ping"));
+    workerMessaging.ping(new Message("ping-" + UUID.randomUUID().toString()));
     return "Hello World!";
   }
 
 
    @GetMapping(value = "/sse", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
    public Flux<Message> serverSendEvents(){
-     return flux;
+     final Message message = new Message("ping-" + UUID.randomUUID().toString());
+     workerMessaging.ping(message);
+     return workerMessaging.queueProcessor;
    }
 
 }

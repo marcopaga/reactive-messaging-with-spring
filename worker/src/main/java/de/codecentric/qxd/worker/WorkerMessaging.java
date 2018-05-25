@@ -22,7 +22,9 @@ public class WorkerMessaging {
   @SendTo(Processor.OUTPUT)
   public Flux<Message> onPing(@Input(Processor.INPUT) Flux<Message> message) {
     LOGGER.info("Worker message pipeline set up");
-    return message.map( input -> new Message("Pong for " + input.getMessage()));
+    return message
+      .map( input -> new Message("Pong for " + input.getMessage()))
+      .doOnEach(signal -> LOGGER.info(signal.get().getMessage()));
   }
 
 }
